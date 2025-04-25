@@ -1,6 +1,6 @@
 # WebSight: AI-Powered Web Research Assistant
 
-![WebSight Logo](static/img/websight-logo.png)
+![WebSight Logo](https://i.postimg.cc/qv4rTj42/temp-Image-NZXmi-C.avif)
 
 WebSight is an advanced AI-powered web research assistant that helps you find, analyze, and synthesize information from the web. It uses Google's Gemini API to provide comprehensive answers to your research questions by analyzing multiple sources and delivering curated, contextual information.
 
@@ -16,11 +16,11 @@ WebSight is an advanced AI-powered web research assistant that helps you find, a
 
 ## Live Demo
 
-Try WebSight now: [https://websight-928850085859.us-central1.run.app](https://websight-928850085859.us-central1.run.app)
+Try WebSight now (Deployed on Google cloud): [https://websight-928850085859.us-central1.run.app](https://websight-928850085859.us-central1.run.app)
 
 ## Screenshot
 
-![WebSight Screenshot](static/img/websight-screenshot.png)
+![WebSight Screenshot](https://i.postimg.cc/L5jddZWy/temp-Imagexyfzxa.avif)
 
 ## Installation
 
@@ -191,7 +191,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Flask and its community for the web framework
 - All open-source libraries that made this project possible
 
-## Contact
-
-- GitHub: [yasboop](https://github.com/yourusername)
-- Email: your.email@example.com 
