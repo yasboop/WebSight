@@ -1,0 +1,9 @@
+google-generativeai
+requests
+beautifulsoup4
+python-dotenv
+Flask
+pytest
+duckduckgo-search
+gunicorn==21.2.0
+lxml 

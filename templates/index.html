@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSight - Advanced AI Research Assistant</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><span class="logo-text">Web<span class="highlight">Sight</span></span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Research</a></li>
+                    <li><a href="#history-container">History</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            {% if error %}
+            <div class="error-banner">
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+
+            <div class="hero-section">
+                <h2>Research with AI-Powered Precision</h2>
+                <p class="tagline">Get comprehensive answers synthesized from reliable web sources</p>
+                
+                <form id="research-form" class="search-form">
+                    <div class="search-input-wrapper">
+                        <input type="text" id="query-input" placeholder="Ask any research question..." required>
+                        <button type="submit" id="search-button">
+                            <i class="fas fa-search"></i>
+                            <span>Research</span>
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="example-queries">
+                    <span>Try asking about:</span>
+                    <div class="chips-container">
+                        <button class="example-chip" data-query="What are the main advantages and challenges of quantum computing?">Quantum computing impacts</button>
+                        <button class="example-chip" data-query="Compare the environmental impact of various renewable energy storage technologies">Renewable energy storage</button>
+                        <button class="example-chip" data-query="What are the best frameworks for modern web development in 2025?">Web development frameworks</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Research Process Section - Initially Hidden -->
+            <div id="research-process" class="research-process" style="display: none;">
+                <div class="process-steps">
+                    <div class="step" id="step-query">
+                        <div class="step-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Query Analysis</h3>
+                            <div class="step-details" id="query-analysis-details">
+                                <div class="thinking-indicator"><span class="dot-1">.</span><span class="dot-2">.</span><span class="dot-3">.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step" id="step-search">
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Web Search</h3>
+                            <div class="step-details" id="search-details">
+                                <div class="thinking-indicator"><span class="dot-1">.</span><span class="dot-2">.</span><span class="dot-3">.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step" id="step-extraction">
+                        <div class="step-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Content Extraction</h3>
+                            <div class="step-details" id="extraction-details">
+                                <div class="thinking-indicator"><span class="dot-1">.</span><span class="dot-2">.</span><span class="dot-3">.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step" id="step-analysis">
+                        <div class="step-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Content Analysis</h3>
+                            <div class="step-details" id="analysis-details">
+                                <div class="thinking-indicator"><span class="dot-1">.</span><span class="dot-2">.</span><span class="dot-3">.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step" id="step-synthesis">
+                        <div class="step-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Information Synthesis</h3>
+                            <div class="step-details" id="synthesis-details">
+                                <div class="thinking-indicator"><span class="dot-1">.</span><span class="dot-2">.</span><span class="dot-3">.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <p id="progress-text" class="progress-text">Starting research...</p>
+            </div>
+
+            <!-- Response Section -->
+            <div id="result-container" class="result-section" style="display: none;">
+                <div class="result-header">
+                    <div id="research-status" class="research-status">
+                        <span class="status-icon">⏳</span> Researching...
+                    </div>
+                    <div class="result-actions">
+                        <button id="toggle-sources" class="toggle-button">
+                            <i class="fas fa-book"></i> Sources
+                        </button>
+                        <button id="toggle-process" class="toggle-button">
+                            <i class="fas fa-cogs"></i> Process
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="result-grid">
+                    <div class="result-content-container">
+                        <div class="loading-animation">
+                            <div class="spinner"></div>
+                            <p>Synthesizing information from multiple sources...</p>
+                        </div>
+                        
+                        <div id="result-content" class="research-result hidden"></div>
+                        
+                        <div class="feedback-section hidden">
+                            <p>Was this research helpful?</p>
+                            <div class="feedback-buttons">
+                                <button class="feedback-btn" data-feedback="positive">
+                                    <i class="fas fa-thumbs-up"></i> Yes
+                                </button>
+                                <button class="feedback-btn" data-feedback="negative">
+                                    <i class="fas fa-thumbs-down"></i> No
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sources-panel" id="sources-panel">
+                        <div class="panel-header">
+                            <h3>Web Sources (<span id="sources-count">0</span>)</h3>
+                            <button class="close-panel"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="panel-content">
+                            <ul id="sources-list" class="sources-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Conversation History Section -->
+            <section id="history-container" class="history-section">
+                <h2>Research History</h2>
+                <div id="history-items" class="history-items">
+                    <!-- History will be populated here -->
+                </div>
+                <button id="clear-history" class="clear-history-btn">
+                    <i class="fas fa-trash-alt"></i> Clear History
+                </button>
+            </section>
+            
+            <!-- About Section -->
+            <section id="about" class="about-section">
+                <h2>About WebSight</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>WebSight is an AI-powered research assistant designed to help you gather, analyze, and synthesize information from across the web.</p>
+                        <p>Our system searches multiple sources, extracts relevant content, and creates comprehensive research reports on any topic you need to investigate.</p>
+                        <h3>How It Works</h3>
+                        <ol class="process-list">
+                            <li><strong>Query Analysis:</strong> We understand your research query and determine the most effective search strategy.</li>
+                            <li><strong>Web Search:</strong> Our system searches the web for the most relevant information.</li>
+                            <li><strong>Content Extraction:</strong> We scrape and extract content from multiple sources.</li>
+                            <li><strong>Analysis:</strong> Our AI analyzes each source for relevance and key information.</li>
+                            <li><strong>Synthesis:</strong> We combine insights from multiple sources into a coherent response.</li>
+                        </ol>
+                    </div>
+                    <div class="about-image">
+                        <img src="/static/img/research-illustration.svg" alt="Research illustration" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-logo">WebSight</h3>
+                    <p>AI-powered web research assistant</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#history-container">History</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WebSight. All rights reserved.</p>
+                <p class="disclaimer">WebSight provides research assistance by searching and analyzing web content. Always verify information from multiple sources.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/websight.js"></script>
+</body>
+</html> 
