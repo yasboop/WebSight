@@ -13,6 +13,11 @@ WebSight is an advanced AI-powered web research assistant that helps you find, a
 - **User-Friendly Interface**: Clean, intuitive UI inspired by modern research tools
 - **Mobile-Responsive Design**: Works seamlessly across desktop and mobile devices
 
+
+## Live Demo
+
+Try WebSight now: [https://websight-928850085859.us-central1.run.app](https://websight-928850085859.us-central1.run.app)
+
 ## Screenshot
 
 ![WebSight Screenshot](static/img/websight-screenshot.png)
