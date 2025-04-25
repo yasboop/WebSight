@@ -128,7 +128,42 @@ For more information on design rationales, see [DESIGN_DECISIONS.md](DESIGN_DECI
 ## Troubleshooting
 
 If you encounter issues, please refer to our [TROUBLESHOOTING.md](TROUBLESHOOTING.md) guide for solutions to common problems.
+## Google Cloud Deployment
 
+WebSight is currently deployed on Google Cloud Run. Here's how it was deployed:
+
+1. **Build the Docker image**:
+   ```
+   docker build -t websight .
+   ```
+
+2. **Tag the image for Google Container Registry**:
+   ```
+   docker tag websight gcr.io/PROJECT_ID/websight
+   ```
+
+3. **Configure Google Cloud CLI**:
+   ```
+   gcloud auth login
+   gcloud config set project PROJECT_ID
+   ```
+
+4. **Push the image to Google Container Registry**:
+   ```
+   docker push gcr.io/PROJECT_ID/websight
+   ```
+
+5. **Deploy to Cloud Run**:
+   ```
+   gcloud run deploy websight \
+     --image gcr.io/PROJECT_ID/websight \
+     --platform managed \
+     --region us-central1 \
+     --allow-unauthenticated \
+     --set-env-vars GOOGLE_API_KEY=your_api_key_here
+   ```
+
+The deployed application is accessible at https://websight-928850085859.us-central1.run.app and automatically scales based on traffic.
 ## Development
 
 ### Running Tests
